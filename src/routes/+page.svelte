@@ -1,6 +1,10 @@
 <script>
   import { Heading } from 'flowbite-svelte';
   import CompanyCard from '$components/CompanyCard.svelte';
+
+  export let data;
+
+  const { startups } = data;
 </script>
 
 <div id="startups-list" class="container mx-auto pb-5">
@@ -8,11 +12,8 @@
   <hr class="my-2" />
 
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-6 mt-10">
-    <CompanyCard name="zerocento.studio" />
-    <CompanyCard name="zerocento.studio" />
-    <CompanyCard name="zerocento.studio" />
-    <CompanyCard name="zerocento.studio" />
-    <CompanyCard name="zerocento.studio" />
-    <CompanyCard name="zerocento.studio" />
+    {#each startups as startup}
+      <CompanyCard name={startup.name} description={startup.description} />
+    {/each}
   </div>
 </div>
